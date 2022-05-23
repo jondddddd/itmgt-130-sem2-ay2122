@@ -35,3 +35,4 @@ def three_number_average(x, y, z):
 x=int(input())
 y=int(input())
 z=int(input())
+three_number_average(x,y,z)
