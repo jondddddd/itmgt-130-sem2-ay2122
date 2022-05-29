@@ -7,6 +7,9 @@ This assignment covers your basic profiency with
 This assignment places heavy emphasis on basic Python constructs.
 '''
 
+from ast import Return
+
+
 def factorial(x):
     '''Item 1. 
     Factorial. 1 point.
@@ -26,6 +29,16 @@ def factorial(x):
         the factorial of the argument
     '''
     # Write your code below this line
+    
+    factorial = 1
+    if int(x) >= 1:
+        for i in range (1,int(x)+1):
+            factorial = factorial * i
+    print("Factorial of ",x , " is : ",factorial)
+    return factorial
+x = input("Enter a number: ")
+factorial(x)
+
 
 def classify_grade(number_grade):
     '''Item 2.
@@ -52,6 +65,25 @@ def classify_grade(number_grade):
         the letter grade equivalent of the number grade.
     '''
     # Write your code below this line
+    classify_grade = 1
+    if int(number_grade)<60:
+        classify_grade = "F"
+    elif int(number_grade)<67:
+        classify_grade = "D"
+    elif int(number_grade)<74:
+        classify_grade = "C"
+    elif int(number_grade)<80:
+        classify_grade = "C+"
+    elif int(number_grade)<86:
+        classify_grade = "B"
+    elif int(number_grade)<92:
+        classify_grade = "B+"
+    else:
+        classify_grade = "A"
+    print("Your Grade is: ",classify_grade)
+    Return
+number_grade = int(input("Enter Grade: "))
+classify_grade(number_grade)
 
 def average_weight(item_quantity_1, item_weight_1, item_quantity_2, item_weight_2):
     '''Item 3.
@@ -99,6 +131,17 @@ def string_sum(string):
         the sum of the digits contained in the string.
     '''
     # Write your code below this line
+    sum_digit = 0
+    for x in string:
+        if x.isdigit() == True:
+            z = int(x)
+            sum_digit = sum_digit + z
+
+    return sum_digit
+     
+print(string_sum("123abcd45"))
+print(string_sum("abcd1234"))
+
 
 def distance(x_1, y_1, x_2, y_2):
     '''Item 5.
