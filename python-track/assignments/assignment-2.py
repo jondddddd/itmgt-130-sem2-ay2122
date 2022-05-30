@@ -40,6 +40,20 @@ def relationship_status(from_member, to_member, social_graph):
         "no relationship" if neither fromMember nor toMember follow each other.
     '''
     # Write your code below this line
+    followertype_list = ["follower", "followed by", "friends", "no relationship"]
+    subjectmember_following = social_graph[from_member]["following"]
+    objectmember_following = social_graph[to_member]["following"]
+    if to_member in subjectmember_following and from_member in objectmember_following:
+        follower_type = "friends"
+    elif to_member in subjectmember_following:
+        follower_type = "follower"
+    elif from_member in objectmember_following:
+        follower_type = "followed by"
+    else:
+        follower_type = "no relationship"
+
+    #Output
+    return(str(follower_type))
 
 
 def tic_tac_toe(board):
@@ -68,6 +82,77 @@ def tic_tac_toe(board):
         the symbol of the winner or "NO WINNER" if there is no winner
     '''
     # Write your code below this line
+    points = 0
+    lastelement = "blank"
+    for row in board:
+        points = 0
+        lastelement = "blank"
+        for element in row:
+            if lastelement == element:
+                points = points + 1
+            lastelement = element
+        if points == 2:
+            return(str(element))
+
+    #Verticals
+    column = -1
+    row = -1
+    vert_board = [[],[],[]]
+    while column < 2:
+        column = column + 1
+        while row < 2:
+            row = row + 1
+            element = board[row][column]
+            list.append(vert_board[column],element)
+        else:
+            row = -1
+    for row in vert_board:
+        points = 0
+        lastelement = "blank"
+        for element in row:
+            if lastelement == element:
+                points = points + 1
+            lastelement = element
+        if points == 2:
+            return(str(element))
+
+    #Diagonals
+    column = -1
+    row = -1
+    points = 0
+    lastelement = "blank"
+    diag_board = [[],[]]
+    while column < 2:
+        
+        column = column + 1
+        row = row + 1
+        element = board[row][column]
+        if lastelement == element:
+            points = points + 1
+        list.append(diag_board[0],element)
+        if points == 2:
+            return(str(element))
+        lastelement = element
+
+    column = -1
+    row = 3
+    points = 0
+    lastelement = "blank"
+    while column < 2:
+        
+        column = column + 1
+        row = row - 1
+        element = board[row][column]
+        if lastelement == element:
+            points = points + 1
+        list.append(diag_board[1],element)
+        if points == 2:
+            return(str(element))
+        lastelement = element
+
+    #No defined winner
+    return(str("No winner"))
+
 
 def eta(first_stop, second_stop, route_map):
     '''
@@ -100,3 +185,22 @@ def eta(first_stop, second_stop, route_map):
         the time it will take the shuttle to travel from first_stop to second_stop
     '''
     # Write your code below this line
+    for tuple_stop in route_map:
+        if tuple_stop[0] == first_stop:
+            start_stop = first_stop
+            time = route_map[tuple_stop]["travel_time_mins"]
+            first_tuple_stop = tuple_stop
+
+    #Switch between different tuples
+    while found_end_stop == False:
+        if first_tuple_stop[1] == second_stop:
+            break
+        else:
+            stop_check = first_tuple_stop[1]
+            for tuple_stop in route_map:
+                if stop_check == tuple_stop[0]:
+                    first_tuple_stop = tuple_stop
+                    time = time + route_map[first_tuple_stop]["travel_time_mins"]
+                    
+    #Output
+    return(int(time))

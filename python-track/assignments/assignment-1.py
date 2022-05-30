@@ -173,6 +173,10 @@ def distance(x_1, y_1, x_2, y_2):
         the distance between the two coordinates
     '''
     # Write your code below this line
+    d1 = (x_2 - x_1)**2
+    d2 = (y_2 - y_1)**2
+    s1 = (d1 + d2)**0.5
+    return(float(s1))
 
 def make_change(amount):
     '''Item 6.
@@ -197,3 +201,14 @@ def make_change(amount):
             "1P:{amount}/25C:{amount}/10C:{amount}/5C:{amount}/1C:{amount}"
     '''
     # Write your code below this line
+    amt = amount * 100
+    amt1 = int(amt//100)
+    amt = amt%100
+    amt2 = int(amt//25)
+    amt = amt%25
+    amt3 = int(amt//10)
+    amt = amt%10
+    amt4 = int(amt//5)
+    amt = amt%5
+    amt5 = int(amt//1)
+    return("1P:{"+str(amt1)+"}/25C:{"+str(amt2)+"}/10C:{"+str(amt3)+"}/5C:{"+str(amt4)+"}/1C:{"+str(amt5)+"}")
